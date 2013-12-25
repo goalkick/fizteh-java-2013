@@ -2,7 +2,6 @@ package ru.fizteh.fivt.students.zhidkovanton.storable;
 
 import ru.fizteh.fivt.students.zhidkovanton.shell.BaseShellCommand;
 import ru.fizteh.fivt.students.zhidkovanton.shell.InvalidCommandException;
-import java.io.IOException;
 
 public final class ShellUse extends BaseShellCommand {
     private DataBaseFactory dataBaseFactory;
@@ -29,17 +28,12 @@ public final class ShellUse extends BaseShellCommand {
             if (!dataFactory.isExists(getArg(1))) {
                 System.out.println(getArg(1) + " not exists");
             } else {
-                try {
-                    dataBaseFactory.dataBase = (DataBase) dataBaseFactory.dataFactory.getTable(getArg(1));
-                    DataBase dataBase = (DataBase) dataBaseFactory.dataBase;
-                    if (dataBase != null) {
-                        dataBase.read();
-                    }
-                } catch (InvalidCommandException e) {
-                    System.out.println(e.getMessage());
-                    System.exit(1);
+                dataBaseFactory.dataBase = (DataBase) dataBaseFactory.dataFactory.getTable(getArg(1));
+                DataBase dataBase = (DataBase) dataBaseFactory.dataBase;
+                if (dataBase != null) {
+                    dataBase.read();
                 }
-                    System.out.println("using " + getArg(1));
+                System.out.println("using " + getArg(1));
             }
         }
     }

@@ -97,21 +97,21 @@ public class DataFactory implements TableProvider {
 
     @Override
     public Table getTable(String name) {
-        checkName(name);
-        String fullName = tableDir + File.separator + name;
-
-        File file = new File(fullName);
-
-        if (!file.exists()) {
-            return null;
-        }
-
-        if (file.isFile() || file.listFiles().length == 0) {
-            throw new InvalidCommandException("Wrong dir");
-        }
-        currentTable = name;
-
         try {
+            checkName(name);
+            String fullName = tableDir + File.separator + name;
+
+            File file = new File(fullName);
+
+            if (!file.exists()) {
+                return null;
+            }
+
+            if (file.isFile() || file.listFiles().length == 0) {
+                throw new IOException("Wrong dir");
+            }
+            currentTable = name;
+
             if (allTables.get(name) == null) {
                 allTables.put(name, new DataBase(fullName, this, null));
             }

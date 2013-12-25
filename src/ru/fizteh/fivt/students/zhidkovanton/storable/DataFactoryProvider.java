@@ -4,6 +4,7 @@ import ru.fizteh.fivt.storage.structured.TableProvider;
 import ru.fizteh.fivt.storage.structured.TableProviderFactory;
 
 import java.io.File;
+import java.io.IOException;
 
 public class DataFactoryProvider implements TableProviderFactory {
 
@@ -13,10 +14,15 @@ public class DataFactoryProvider implements TableProviderFactory {
             throw new IllegalArgumentException("Bad base directory");
         }
         File directoryFile = new File(dir);
-        if (!directoryFile.exists()) {
-            if (!directoryFile.mkdir()) {
-                throw new IllegalArgumentException("Can't create" + dir);
+        try {
+            if (!directoryFile.exists()) {
+                if (!directoryFile.mkdir()) {
+                    throw new IOException("Can't create" + dir);
+                }
             }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+            System.exit(1);
         }
         if (!directoryFile.isDirectory()) {
             throw new IllegalArgumentException("Hmm... It isn't a directory" + dir);

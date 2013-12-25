@@ -31,8 +31,8 @@ public class DataStoreable implements Storeable {
         for (int i = 0; i < table.getColumnsCount(); ++i) {
             Object value;
             types.add(table.getColumnType(i));
-            if (values.get(i).getClass() == JSONObject.NULL.getClass() ||
-                    JSONObject.NULL == values.get(i)) {
+            if (values.get(i).getClass() == JSONObject.NULL.getClass()
+                    || JSONObject.NULL == values.get(i)) {
                 value = null;
             } else {
                 value = getType(values.get(i).toString(), types.get(i).getSimpleName());

@@ -136,7 +136,8 @@ public class DataBase implements Table {
     @Override
     public Class<?> getColumnType(int columnIndex) {
         if ((columnIndex < 0) || (columnIndex >= types.size())) {
-            throw new IndexOutOfBoundsException("Wrong column index: There are only " + types.size() + " but you want " + columnIndex);
+            throw new IndexOutOfBoundsException("Wrong column index: There are only " + types.size()
+                    + " but you want " + columnIndex);
         }
         return types.get(columnIndex);
     }

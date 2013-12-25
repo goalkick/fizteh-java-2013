@@ -5,6 +5,7 @@ import ru.fizteh.fivt.storage.structured.ColumnFormatException;
 import ru.fizteh.fivt.storage.structured.Storeable;
 import ru.fizteh.fivt.storage.structured.Table;
 import ru.fizteh.fivt.storage.structured.TableProvider;
+import ru.fizteh.fivt.students.zhidkovanton.shell.InvalidCommandException;
 
 import java.io.File;
 import java.io.IOException;
@@ -101,8 +102,12 @@ public class DataFactory implements TableProvider {
 
         File file = new File(fullName);
 
-        if (!file.exists() || file.isFile()) {
+        if (!file.exists()) {
             return null;
+        }
+
+        if (file.isFile() || file.listFiles().length == 0) {
+            throw new InvalidCommandException("Wrong dir");
         }
         currentTable = name;
 

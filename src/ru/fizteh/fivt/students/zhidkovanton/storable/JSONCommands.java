@@ -12,7 +12,8 @@ public class JSONCommands {
             storeable.getColumnAt(table.getColumnsCount());
             throw new ColumnFormatException("Too many columns!");
         } catch (IndexOutOfBoundsException e) {
-
+            System.out.println(e.getMessage());
+            System.exit(1);
         }
 
         JSONArray json = new JSONArray();

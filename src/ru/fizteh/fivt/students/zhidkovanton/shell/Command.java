@@ -29,7 +29,7 @@ public class Command {
     public String getSpacedArg(final int index) {
         int currentIndex = 0;
 
-        for (int i = 0; i  < index; ++i) {
+        for (int i = 0; i < index; ++i) {
             currentIndex = initialCommand.indexOf(argList[i], currentIndex) + argList[i].length();
         }
 

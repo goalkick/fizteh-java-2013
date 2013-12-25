@@ -67,8 +67,10 @@ public class State {
             return state.size();
         }
         for (Map.Entry<String, String> curPair : state.entrySet()) {
-            if (!newState.get(curPair.getKey()).equals(curPair.getValue())) {
-                ++ans;
+            if (newState.get(curPair.getKey()) != null) {
+                if (!newState.get(curPair.getKey()).equals(curPair.getValue())) {
+                    ++ans;
+                }
             }
         }
 

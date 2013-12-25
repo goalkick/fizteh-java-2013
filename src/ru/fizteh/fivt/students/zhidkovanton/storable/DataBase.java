@@ -202,7 +202,7 @@ public class DataBase implements Table {
     public int getNumberOfChanges() {
         int ans = 0;
         if (state == null) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Null Table");
         }
         for (int i = 0; i < 256; ++i) {
             if (clone[i] != null) {

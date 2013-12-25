@@ -82,6 +82,7 @@ public class FileService {
             System.out.println(e.getMessage());
             System.exit(1);
         } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
             System.exit(1);
         }
 

@@ -1,19 +1,18 @@
 package ru.fizteh.fivt.students.zhidkovanton.storable;
 
 import org.json.JSONArray;
-
 import ru.fizteh.fivt.storage.structured.ColumnFormatException;
 import ru.fizteh.fivt.storage.structured.Storeable;
 import ru.fizteh.fivt.storage.structured.Table;
 import ru.fizteh.fivt.storage.structured.TableProvider;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class DataFactory implements TableProvider {
     private String currentTable = null;
@@ -113,6 +112,7 @@ public class DataFactory implements TableProvider {
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());
+            System.exit(1);
         }
         return allTables.get(name);
     }
@@ -155,7 +155,7 @@ public class DataFactory implements TableProvider {
     }
 
     @Override
-    public Storeable createFor(Table table){
+    public Storeable createFor(Table table) {
         return new DataStoreable(table);
     }
 

@@ -7,7 +7,7 @@ import ru.fizteh.fivt.storage.structured.Table;
 
 public class JSONCommands {
 
-    public static String serialize(Table table, Storeable  storeable) throws ColumnFormatException {
+    public static String serialize(Table table, Storeable storeable) throws ColumnFormatException {
         try {
             storeable.getColumnAt(table.getColumnsCount());
             throw new ColumnFormatException("Too many columns!");

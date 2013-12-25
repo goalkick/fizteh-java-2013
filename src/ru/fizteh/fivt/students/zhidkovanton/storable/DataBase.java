@@ -1,12 +1,12 @@
 package ru.fizteh.fivt.students.zhidkovanton.storable;
 
-import ru.fizteh.fivt.storage.structured.Table;
 import ru.fizteh.fivt.storage.structured.Storeable;
+import ru.fizteh.fivt.storage.structured.Table;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 import java.text.ParseException;
+import java.util.List;
 
 public class DataBase implements Table {
     private static State[] state;
@@ -88,7 +88,7 @@ public class DataBase implements Table {
         }
         int ans = 0;
         for (int i = 0; i < 256; ++i) {
-                ans += state[i].size();
+            ans += state[i].size();
         }
         return ans;
     }
@@ -136,7 +136,7 @@ public class DataBase implements Table {
     @Override
     public Class<?> getColumnType(int columnIndex) {
         if ((columnIndex < 0) || (columnIndex >= types.size())) {
-            throw new IndexOutOfBoundsException("Wrong column index: There are only " + types.size() + " but you want " +columnIndex);
+            throw new IndexOutOfBoundsException("Wrong column index: There are only " + types.size() + " but you want " + columnIndex);
         }
         return types.get(columnIndex);
     }

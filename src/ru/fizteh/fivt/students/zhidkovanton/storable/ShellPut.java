@@ -1,9 +1,9 @@
 package ru.fizteh.fivt.students.zhidkovanton.storable;
 
+import ru.fizteh.fivt.storage.structured.Storeable;
 import ru.fizteh.fivt.students.zhidkovanton.shell.BaseShellCommand;
 import ru.fizteh.fivt.students.zhidkovanton.shell.Command;
 import ru.fizteh.fivt.students.zhidkovanton.shell.InvalidCommandException;
-import ru.fizteh.fivt.storage.structured.Storeable;
 
 import java.text.ParseException;
 

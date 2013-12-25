@@ -1,7 +1,6 @@
 package ru.fizteh.fivt.students.zhidkovanton.storable;
 
 import org.json.JSONObject;
-
 import ru.fizteh.fivt.storage.structured.ColumnFormatException;
 import ru.fizteh.fivt.storage.structured.Storeable;
 import ru.fizteh.fivt.storage.structured.Table;
@@ -33,10 +32,10 @@ public class DataStoreable implements Storeable {
             Object value;
             types.add(table.getColumnType(i));
             if (values.get(i).getClass() == JSONObject.NULL.getClass() ||
-                    JSONObject.NULL == values.get(i)){
+                    JSONObject.NULL == values.get(i)) {
                 value = null;
             } else {
-                value  = getType(values.get(i).toString(), types.get(i).getSimpleName());
+                value = getType(values.get(i).toString(), types.get(i).getSimpleName());
             }
             this.values.add(value);
         }
@@ -89,7 +88,7 @@ public class DataStoreable implements Storeable {
         if (value == null || value == JSONObject.NULL) {
             value = null;
         } else {
-            value  = getType(value.toString(), types.get(columnIndex).getSimpleName());
+            value = getType(value.toString(), types.get(columnIndex).getSimpleName());
         }
 
         values.set(columnIndex, value);

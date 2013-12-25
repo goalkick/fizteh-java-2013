@@ -125,7 +125,7 @@ public class DataBase implements Table {
 
     @Override
     public String getName() {
-        return tableName;
+        return provider.getCurrentName();
     }
 
     @Override

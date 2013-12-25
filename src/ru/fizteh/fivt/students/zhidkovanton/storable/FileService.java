@@ -79,7 +79,7 @@ public class FileService {
         } catch (ShellExitException e) {
             System.exit(0);
         } catch (FileAccessException e) {
-            System.err.println(e.getMessage());
+            System.out.println(e.getMessage());
             System.exit(1);
         } catch (IllegalArgumentException e) {
             System.exit(1);

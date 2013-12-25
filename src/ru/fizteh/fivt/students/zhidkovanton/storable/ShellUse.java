@@ -30,7 +30,7 @@ public final class ShellUse extends BaseShellCommand {
                 System.out.println("using " + getArg(1));
                 dataBaseFactory.dataBase = (DataBase) dataBaseFactory.dataFactory.getTable(getArg(1));
                 DataBase dataBase = (DataBase) dataBaseFactory.dataBase;
-                dataBase.read();
+                if(dataBase != null) dataBase.read();
             }
         }
     }

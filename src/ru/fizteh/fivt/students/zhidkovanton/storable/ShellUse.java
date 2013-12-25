@@ -35,11 +35,11 @@ public final class ShellUse extends BaseShellCommand {
                     if (dataBase != null) {
                         dataBase.read();
                     }
-                    System.out.println("using " + getArg(1));
                 } catch (InvalidCommandException e) {
                     System.out.println(e.getMessage());
                     System.exit(1);
                 }
+                    System.out.println("using " + getArg(1));
             }
         }
     }

@@ -38,6 +38,8 @@ public class FileService {
             } catch (InvalidCommandException e) {
                 System.out.println("wrong type (" + e.getMessage() + ")");
                 System.exit(1);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
             } finally {
                 System.out.print("$ ");
             }

@@ -105,7 +105,7 @@ public class MySignature {
             }
 
             if (!flag) {
-                throw new IOException("Cannot read type! position: " + i);
+                throw new IOException("wrong type (Cannot read type! position: " + i + ")");
             }
         }
         return result;

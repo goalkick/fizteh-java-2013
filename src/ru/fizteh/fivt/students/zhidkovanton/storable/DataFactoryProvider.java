@@ -9,20 +9,15 @@ import java.io.IOException;
 public class DataFactoryProvider implements TableProviderFactory {
 
     @Override
-    public TableProvider create(String dir) {
+    public TableProvider create(String dir) throws IOException {
         if ((dir == null) || dir.trim().equals("")) {
             throw new IllegalArgumentException("Bad base directory");
         }
         File directoryFile = new File(dir);
-        try {
-            if (!directoryFile.exists()) {
-                if (!directoryFile.mkdir()) {
-                    throw new IOException("Can't create" + dir);
-                }
+        if (!directoryFile.exists()) {
+            if (!directoryFile.mkdir()) {
+                throw new IOException("Can't create" + dir);
             }
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-            System.exit(1);
         }
         if (!directoryFile.isDirectory()) {
             throw new IllegalArgumentException("Hmm... It isn't a directory" + dir);

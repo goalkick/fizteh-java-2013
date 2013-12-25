@@ -1,7 +1,6 @@
 package ru.fizteh.fivt.students.zhidkovanton.storable;
 
 import ru.fizteh.fivt.students.zhidkovanton.shell.BaseShellCommand;
-import ru.fizteh.fivt.students.zhidkovanton.shell.InvalidCommandException;
 
 public final class ShellUse extends BaseShellCommand {
     private DataBaseFactory dataBaseFactory;

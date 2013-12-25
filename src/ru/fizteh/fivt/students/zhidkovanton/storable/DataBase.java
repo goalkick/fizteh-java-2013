@@ -212,30 +212,39 @@ public class DataBase implements Table {
     }
 
     public void read() {
-        if (tableName == null) {
-            throw new IllegalArgumentException("Can't read file because of no file to read");
-        }
-        for (int i = 0; i < 256; ++i) {
-            state[i].clear();
-        }
-
-        String shablon = tableName + File.separator;
-
-        for (int i = 0; i < 16; ++i) {
-            String directory = shablon + Integer.toString(i) + ".dir";
-
-            File dir = new File(directory);
-
-            if (dir.exists()) {
-                directory += File.separator;
-                for (int k = 0; k < 16; ++k) {
-                    String fullPath = directory + Integer.toString(k) + ".dat";
-                    File file = new File(fullPath);
-                    state[16 * i + k].read(file);
-                    clone[16 * i + k].read(file);
-                }
+        try {
+            if (tableName == null) {
+                throw new IllegalArgumentException("Can't read file because of no file to read");
+            }
+            for (int i = 0; i < 256; ++i) {
+                state[i].clear();
             }
 
+            String shablon = tableName + File.separator;
+
+            for (int i = 0; i < 16; ++i) {
+                String directory = shablon + Integer.toString(i) + ".dir";
+
+                File dir = new File(directory);
+
+                if (dir.exists() && (dir.listFiles().length == 0 || dir.isFile())) {
+                    throw new IOException("Wrong dir");
+                }
+
+                if (dir.exists()) {
+                    directory += File.separator;
+                    for (int k = 0; k < 16; ++k) {
+                        String fullPath = directory + Integer.toString(k) + ".dat";
+                        File file = new File(fullPath);
+                        state[16 * i + k].read(file);
+                        clone[16 * i + k].read(file);
+                    }
+                }
+
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+            System.exit(1);
         }
     }
 

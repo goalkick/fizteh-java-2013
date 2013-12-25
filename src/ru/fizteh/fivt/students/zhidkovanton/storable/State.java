@@ -88,6 +88,9 @@ public class State {
 
     public void read(File input) {
         try {
+            if (input.exists() && input.length() == 0) {
+                throw new IOException("Empty File");
+            }
             if (input.exists()) {
                 RandomAccessFile in = new RandomAccessFile(input, "rw");
 

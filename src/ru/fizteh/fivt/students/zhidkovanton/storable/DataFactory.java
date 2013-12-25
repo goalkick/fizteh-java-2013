@@ -73,7 +73,7 @@ public class DataFactory implements TableProvider {
         checkName(name);
         String fullName = tableDir + File.separator + name;
 
-        if (columnTypes == null || columnTypes.size() == 0) {
+        if (columnTypes == null) {
             throw new IllegalArgumentException("wrong type (null)");
         }
 

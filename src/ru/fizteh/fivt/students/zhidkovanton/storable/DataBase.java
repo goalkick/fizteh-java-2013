@@ -125,7 +125,8 @@ public class DataBase implements Table {
 
     @Override
     public String getName() {
-        return provider.getCurrentName();
+        File file = new File(tableName);
+        return file.getName();
     }
 
     @Override

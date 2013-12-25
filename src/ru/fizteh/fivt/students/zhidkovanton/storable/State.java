@@ -86,7 +86,7 @@ public class State {
         }
     }
 
-    public void read(File input) {
+    public void read(File input, int ndir, int nfile) {
         try {
             if (input.exists() && input.length() == 0) {
                 throw new IOException("Empty File");
@@ -116,6 +116,13 @@ public class State {
                     in.read(value);
                     String keyString = new String(key, "UTF-8");
                     String valueString = new String(value, "UTF-8");
+                    int hashCode = keyString.hashCode();
+                    hashCode = Math.abs(hashCode);
+                    int q = hashCode % 16;
+                    int qq = hashCode / 16 % 16;
+                    if (q != ndir || qq != nfile) {
+                        throw new IOException("wrong key placement");
+                    }
                     state.put(keyString, valueString);
                 }
                 in.close();

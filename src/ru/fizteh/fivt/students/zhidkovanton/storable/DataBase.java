@@ -236,8 +236,8 @@ public class DataBase implements Table {
                     for (int k = 0; k < 16; ++k) {
                         String fullPath = directory + Integer.toString(k) + ".dat";
                         File file = new File(fullPath);
-                        state[16 * i + k].read(file);
-                        clone[16 * i + k].read(file);
+                        state[16 * i + k].read(file, i, k);
+                        clone[16 * i + k].read(file, i, k);
                     }
                 }
 

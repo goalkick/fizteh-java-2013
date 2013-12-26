@@ -80,9 +80,6 @@ public class DataFactory implements TableProvider {
         File file = new File(fullName);
 
         if (file.exists()) {
-            if (allTables.get(name) == null) {
-                allTables.put(name, new DataBase(fullName, this, columnTypes));
-            }
             return null;
         }
 
@@ -118,9 +115,6 @@ public class DataFactory implements TableProvider {
             System.out.println(e.getMessage());
             System.exit(1);
         }
-
-        DataBase dataBase = allTables.get(name);
-        dataBase.read();
 
         return allTables.get(name);
     }

@@ -2,6 +2,8 @@ package ru.fizteh.fivt.students.zhidkovanton.storable;
 
 import ru.fizteh.fivt.storage.structured.Storeable;
 import ru.fizteh.fivt.storage.structured.Table;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,7 +11,7 @@ import java.text.ParseException;
 import java.util.List;
 
 public class DataBase implements Table {
-    private  static State[]  state;
+    private static State[] state;
     private static State[] clone;
     private String tableName = null;
     private List<Class<?>> types;
@@ -73,11 +75,10 @@ public class DataBase implements Table {
     @Override
     public int commit() {
         int ans = getNumberOfChanges();
-            for (int i = 0; i < 256; ++i) {
-                clone[i].clear();
-                state[i].putNewMap(clone[i]);
-            }
-        this.print();
+        for (int i = 0; i < 256; ++i) {
+            clone[i].clear();
+            state[i].putNewMap(clone[i]);
+        }
         return ans;
     }
 

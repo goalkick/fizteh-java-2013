@@ -19,6 +19,8 @@ public class ShellCommit extends BaseShellCommand {
         try {
             if (dataBaseFactory.dataBase != null) {
                 System.out.println(dataBaseFactory.dataBase.commit());
+                DataBase dataBase = (DataBase) dataBaseFactory.dataBase;
+                dataBase.print();
             } else {
                 System.out.println("no table");
             }

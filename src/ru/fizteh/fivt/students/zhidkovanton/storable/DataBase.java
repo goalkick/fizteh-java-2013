@@ -9,7 +9,7 @@ import java.text.ParseException;
 import java.util.List;
 
 public class DataBase implements Table {
-    private static State[] state;
+    private  static State[]  state;
     private static State[] clone;
     private String tableName = null;
     private List<Class<?>> types;
@@ -73,11 +73,11 @@ public class DataBase implements Table {
     @Override
     public int commit() {
         int ans = getNumberOfChanges();
-        for (int i = 0; i < 256; ++i) {
-            clone[i].clear();
-            state[i].putNewMap(clone[i]);
-        }
-
+            for (int i = 0; i < 256; ++i) {
+                clone[i].clear();
+                state[i].putNewMap(clone[i]);
+            }
+        this.print();
         return ans;
     }
 

@@ -118,6 +118,10 @@ public class DataFactory implements TableProvider {
             System.out.println(e.getMessage());
             System.exit(1);
         }
+
+        DataBase dataBase = allTables.get(name);
+        dataBase.read();
+
         return allTables.get(name);
     }
 

@@ -2,8 +2,6 @@ package ru.fizteh.fivt.students.zhidkovanton.storable;
 
 import ru.fizteh.fivt.storage.structured.Storeable;
 import ru.fizteh.fivt.storage.structured.Table;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import java.io.File;
 import java.io.IOException;

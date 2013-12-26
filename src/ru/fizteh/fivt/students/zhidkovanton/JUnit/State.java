@@ -40,22 +40,29 @@ public class State {
 
             in.getChannel().truncate(0);
             int size = 0;
+
+            ArrayList<String> keys = new ArrayList<String>();
+
             for (String key : state.keySet()) {
-                size += key.getBytes(StandardCharsets.UTF_8).length + 5;
+                 keys.add(key);
             }
 
-            for (Map.Entry<String, String> curPair : state.entrySet()) {
+            for (int i = 0; i < keys.size(); ++i) {
+                size += keys.get(i).getBytes(StandardCharsets.UTF_8).length + 5;
+            }
 
-                in.write(curPair.getKey().getBytes("UTF-8"));
+            for (int i = 0; i < keys.size(); ++i) {
+
+                in.write(keys.get(i).getBytes("UTF-8"));
                 in.write('\0');
                 in.writeInt(size);
-                size += curPair.getKey().getBytes(StandardCharsets.UTF_8).length;
+                size += keys.get(i).getBytes(StandardCharsets.UTF_8).length;
 
             }
 
-            for (Map.Entry<String, String> curPair : state.entrySet()) {
+            for (int i = 0; i < keys.size(); ++i) {
 
-                in.write(curPair.getValue().getBytes());
+                in.write(state.get(keys.get(i)).getBytes("UTF-8"));
 
             }
             in.close();
